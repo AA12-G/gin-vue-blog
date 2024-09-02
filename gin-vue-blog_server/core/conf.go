@@ -3,6 +3,7 @@ package core
 import (
 	"fmt"
 	"gin-vue-blog_server/config"
+	"gin-vue-blog_server/global"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
@@ -21,5 +22,5 @@ func InitConf() {
 		log.Fatalf("config Init Unmarshal: %v", err)
 	}
 	log.Println("config yamlFile load Init success.")
-	fmt.Println(c)
+	global.Config = c
 }
