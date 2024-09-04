@@ -1,7 +1,7 @@
 package models
 
-// MenuImageModel 菜单图片关联表
-type MenuImageModel struct {
+// MenuBannerModel 菜单图片关联表
+type MenuBannerModel struct {
 	MenuID      uint        `json:"menu_id"`
 	MenuModel   MenuModel   `gorm:"foreignKey:MenuID"`
 	BannerID    uint        `json:"banner_id"`
