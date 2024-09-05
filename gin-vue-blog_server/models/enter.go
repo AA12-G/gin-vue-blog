@@ -8,8 +8,9 @@ type MODEL struct {
 	UpdatedAt time.Time `json:"updated_at"`            // 更新时间
 }
 
-type Page struct {
+type PageInfo struct {
 	Page  int    `form:"page"`
+	Key   string `form:"key"`
 	Limit int    `form:"limit"`
-	Sort  string `form:"sort"` // desc降序 asc升序
+	Sort  string `form:"sort"`
 }

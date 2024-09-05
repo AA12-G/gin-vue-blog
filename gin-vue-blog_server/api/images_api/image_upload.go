@@ -3,9 +3,11 @@ package images_api
 import (
 	"fmt"
 	"gin-vue-blog_server/global"
+	"gin-vue-blog_server/models"
 	"gin-vue-blog_server/models/res"
 	"gin-vue-blog_server/utils"
 	"github.com/gin-gonic/gin"
+	"io"
 	"io/fs"
 	"os"
 	"path"
@@ -83,7 +85,26 @@ func (ImagesApi) ImagesUploadView(c *gin.Context) {
 			continue
 		}
 
-		err := c.SaveUploadedFile(file, filePath)
+		fileObj, err := file.Open()
+		if err != nil {
+			global.Log.Error(err)
+		}
+		byteData, err := io.ReadAll(fileObj)
+		imageHash := utils.Md5(byteData)
+		//查看数据库中是否存在这个图片
+		var bannerModel models.BannerModel
+		err = global.DB.Take(&bannerModel, "hash = ?", imageHash).Error
+		if err == nil {
+			//找到了
+			resList = append(resList, FileUploadResponse{
+				FileName:  bannerModel.Path,
+				IsSuccess: false,
+				Msg:       "图片已存在",
+			})
+			continue
+		}
+
+		err = c.SaveUploadedFile(file, filePath)
 		if err != nil {
 			global.Log.Error(err)
 			resList = append(resList, FileUploadResponse{
@@ -97,6 +118,12 @@ func (ImagesApi) ImagesUploadView(c *gin.Context) {
 			FileName:  filePath,
 			IsSuccess: true,
 			Msg:       "上传成功",
+		})
+		//把图片加入数据库
+		global.DB.Create(&models.BannerModel{
+			Path: filePath,
+			Hash: imageHash,
+			Name: fileName,
 		})
 
 	}
