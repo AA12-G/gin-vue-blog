@@ -18,13 +18,18 @@ func ComList[T any](model T, option Option) (list []T, count int64, err error) {
 		//如果有bug才打印
 		DB = global.DB.Session(&gorm.Session{Logger: global.MysqlLog})
 	}
+	//图片的列表排序
+	if option.Sort == "" {
+		//option.Sort = "id desc" //默认按照id倒序
+		option.Sort = "id asc" //默认按照id正序
+	}
 
 	count = DB.Select("id").Find(&list).RowsAffected
 	offset := (option.Page - 1) * option.Limit
 	if offset < 0 {
 		offset = 0
 	}
-	err = DB.Limit(option.Limit).Offset(offset).Find(&list).Error
+	err = DB.Limit(option.Limit).Offset(offset).Order(option.Sort).Find(&list).Error
 
 	return list, count, err
 }
