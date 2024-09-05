@@ -17,5 +17,6 @@ func InitRouter() *gin.Engine {
 	routerGroup := RouterGroup{apiRouterGroup}
 	//系统配置api
 	routerGroup.SettingsRouter()
+	routerGroup.ImagesRouter()
 	return router
 }
