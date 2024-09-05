@@ -4,10 +4,26 @@ import (
 	"fmt"
 	"gin-vue-blog_server/global"
 	"gin-vue-blog_server/models/res"
+	"gin-vue-blog_server/utils"
 	"github.com/gin-gonic/gin"
 	"io/fs"
 	"os"
 	"path"
+	"strings"
+)
+
+var (
+	// WhiteImageList 图片上传的白名单
+	WhiteImageList = []string{
+		"jpg",
+		"png",
+		"jpeg",
+		"ico",
+		"tiff",
+		"gif",
+		"svg",
+		"webp",
+	}
 )
 
 type FileUploadResponse struct {
@@ -43,6 +59,18 @@ func (ImagesApi) ImagesUploadView(c *gin.Context) {
 	var resList []FileUploadResponse
 
 	for _, file := range fileList {
+		fileName := file.Filename
+		nameList := strings.Split(fileName, ".")
+		suffix := strings.ToLower(nameList[len(nameList)-1])
+		if !utils.InList(suffix, WhiteImageList) {
+			resList = append(resList, FileUploadResponse{
+				FileName:  fileName,
+				IsSuccess: false,
+				Msg:       "非法文件",
+			})
+			continue
+		}
+
 		filePath := path.Join(basePath, file.Filename)
 		//判断大小
 		size := float64(file.Size) / float64(1024*1024)
