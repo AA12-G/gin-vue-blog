@@ -7,6 +7,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// AdvertFindView 查询广告
+// @Tags 广告管理
+// @Summary 查询广告
+// @Description 查询广告
+// @Param data query models.PageInfo  false "查询参数"
+// @Router /api/adverts [get]
+// @Produce json
+// @Success 200 {object} res.Response{data=res.ListResponse[models.AdvertModel]}
 // 查询广告列表
 func (AdvertApi) AdvertFindView(c *gin.Context) {
 	var cr models.PageInfo
