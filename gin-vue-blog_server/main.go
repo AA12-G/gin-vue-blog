@@ -3,10 +3,17 @@ package main
 import (
 	"fmt"
 	"gin-vue-blog_server/core"
+	_ "gin-vue-blog_server/docs"
 	"gin-vue-blog_server/flag"
 	"gin-vue-blog_server/global"
 	"gin-vue-blog_server/routers"
 )
+
+//@title  gin-vue-blog_server API文档
+//@version 1.0
+//@description gin-vue-blog_server  API文档
+//@h0st127.0.0.01:8080
+//@BasePath /
 
 func main() {
 	//读取配置文件
