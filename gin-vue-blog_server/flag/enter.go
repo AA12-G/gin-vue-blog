@@ -2,6 +2,7 @@ package flag
 
 import (
 	sys_flag "flag"
+	"github.com/fatih/structs"
 )
 
 type Option struct {
@@ -23,11 +24,21 @@ func Parse() Option {
 }
 
 // IsStopWeb 是否停止web项目
-func IsStopWeb(option Option) bool {
-	if option.DB {
-		return true
+func IsStopWeb(option Option) (f bool) {
+	maps := structs.Map(&option)
+	for _, v := range maps {
+		switch val := v.(type) {
+		case string:
+			if val != "" {
+				f = true
+			}
+		case bool:
+			if val == true {
+				f = true
+			}
+		}
 	}
-	return true // 停止web项目
+	return f
 }
 
 // SwitchOption 根据命令执行不同的函数
@@ -39,5 +50,5 @@ func SwitchOption(option Option) {
 	if option.User == "admin" || option.User == "user" {
 		CreateUser(option.User)
 	}
-	sys_flag.Usage()
+	//sys_flag.Usage()
 }
