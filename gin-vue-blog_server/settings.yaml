@@ -49,9 +49,9 @@ email:
   user_tls: false
   authorization_code: ahvvuoqmrmiyfjhj
 jwt:
-  secret: ""
-  expires: 48
-  issuer: gin_chat
+  secret: xxxx
+  expires: 2
+  issuer: "1234"
 qi_niu:
   Enable: false
   access_key: xxx
