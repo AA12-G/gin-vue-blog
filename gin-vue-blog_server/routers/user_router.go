@@ -18,4 +18,5 @@ func (router RouterGroup) UserRouter() {
 	router.PUT("/user_password", middleware.JwtAuth(), userApi.UserUpdatePassword)   // 修改用户密码
 	router.DELETE("/user", middleware.JwtAdmin(), userApi.UserRemoveView)            // 删除用户 用的少
 	router.POST("/user_bind_email", middleware.JwtAuth(), userApi.UserBindEmailView) // 发送验证码
+	router.POST("/user", middleware.JwtAuth(), userApi.UserCreateView)               // 创建用户
 }
