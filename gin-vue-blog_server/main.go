@@ -22,6 +22,8 @@ func main() {
 	global.Log = core.InitLogger()
 	//连接数据库
 	global.DB = core.InitGorm()
+	//连接redis
+	global.Redis = core.ConnectRedis()
 
 	option := flag.Parse()
 	fmt.Println(option)

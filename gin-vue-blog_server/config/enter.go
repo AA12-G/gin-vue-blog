@@ -6,8 +6,9 @@ type Config struct {
 	System   System   `yaml:"system"`
 	SiteInfo SiteInfo `yaml:"site_info"`
 	Upload   Upload   `yaml:"upload"`
-	QQ       QQ       `canGet:"qq" yaml:"qq"`
-	Email    Email    `canGet:"email" yaml:"email"`
-	Jwt      Jwt      `canGet:"jwt" yaml:"jwt"`
-	QiNiu    QiNiu    `canGet:"qiNiu" yaml:"qi_niu"`
+	QQ       QQ       `yaml:"qq"`
+	Email    Email    `yaml:"email"`
+	Jwt      Jwt      `yaml:"jwt"`
+	QiNiu    QiNiu    ` yaml:"qi_niu"`
+	Redis    Redis    `yaml:"redis"`
 }
