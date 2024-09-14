@@ -7,5 +7,7 @@ import (
 
 func (router RouterGroup) MessageRouter() {
 	messageApi := api.ApiGroupApp.MessageApi
-	router.POST("/message", middleware.JwtAuth(), messageApi.MessageCreateView) // POST 上传（添加）
+	router.POST("/message", middleware.JwtAuth(), messageApi.MessageCreateView) // POST 发送消息
+	router.GET("/message_all", messageApi.MessageListAllView)                   // 查看所有消息列表
+	router.GET("/message", middleware.JwtAuth(), messageApi.MessageListView)
 }
