@@ -1,3 +1,15 @@
 <script setup>
-<h1>第一个</h1>
+
 </script>
+
+<template>
+<router-view/>
+</template>
+
+<style lang="scss">
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+</style>
