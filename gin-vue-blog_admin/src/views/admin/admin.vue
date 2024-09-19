@@ -5,10 +5,13 @@
 <template>
 <div class="gvb_admin">
     <aside>
-        <i class="iconfont icon-yonghu"></i>
+        
     </aside>
     <div class="main">
-        <header></header>
+        <header>
+            <i class="iconfont icon-yonghu"></i>
+            <i class="fa fa-hand-o-up"></i>
+        </header>
         <div class="tabs"></div>
         <main></main>
     </div>

@@ -13,4 +13,5 @@
     box-sizing: border-box;
 }
 @import "assets/css/iconfont.css";
+@import "font-awesome/css/font-awesome.min.css";
 </style>
