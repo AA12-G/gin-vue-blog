@@ -5,7 +5,7 @@
 <template>
 <div class="gvb_admin">
     <aside>
-
+        <i class="iconfont icon-yonghu"></i>
     </aside>
     <div class="main">
         <header></header>
