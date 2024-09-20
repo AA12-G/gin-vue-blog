@@ -1,5 +1,16 @@
 <script setup>
+import {useRouter} from "vue-router"
 
+const router = useRouter()
+function menuClick({key}){
+    if(key === "logout"){
+        console.log("logout")
+        return
+    }
+    router.push({
+        name:key
+    })
+}
 </script>
 
 <template>
@@ -9,8 +20,48 @@
     </aside>
     <div class="main">
         <header>
-            <i class="iconfont icon-yonghu"></i>
-            <i class="fa fa-hand-o-up"></i>
+           <div class="left">
+            <a-breadcrumb>
+                <a-breadcrumb-item>首页</a-breadcrumb-item>
+                <a-breadcrumb-item><a href="">个人中心</a></a-breadcrumb-item>
+                <a-breadcrumb-item>用户列表</a-breadcrumb-item>
+              </a-breadcrumb>
+           </div>
+           <div class="right">
+                <div class="icon_actions">
+                    <i class="fa fa-home"></i>
+                    <i class="fa fa-moon-o"></i>
+                    <i class="fa fa-sun-o"></i>
+                    <i class="fa fa-arrows-alt"></i>
+                </div>
+                <div class="avatar">
+                    <img src="https://avatars.githubusercontent.com/u/141143150?v=4&size=64" alt="">
+                </div>
+                <div class="drop_menu">
+                    <a-dropdown placement="bottomRight">
+                        <a class="ant-dropdown-link" @click.prevent>
+                            小广
+                          <i class="fa fa-angle-down"></i>
+                        </a>
+                        <template #overlay>
+                          <a-menu @click="menuClick">
+                            <a-menu-item key="login">
+                              <a href="javascript:;">个人中心</a>
+                            </a-menu-item>
+                            <a-menu-item key="my_message">
+                              <a href="javascript:;">我的消息</a>
+                            </a-menu-item>
+                            <a-menu-item key="article_list">
+                              <a href="javascript:;">消息列表</a>
+                            </a-menu-item>
+                            <a-menu-item key="logout">
+                              <a href="javascript:;">注销退出</a>
+                            </a-menu-item>
+                          </a-menu>
+                        </template>
+                      </a-dropdown>
+                </div>
+           </div>    
         </header>
         <div class="tabs"></div>
         <main></main>
@@ -34,8 +85,45 @@
         header{
             height: 60px;
             background-color: white;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        
+
+        .right{
+            display: flex;
+            align-items: center;
         }
 
+        .icon_actions{
+            margin-right: 20px;
+
+            i{
+                margin-left: 10px;
+                cursor: pointer;
+                font-size: 16px;
+                color: var(--text);
+            }
+            i:hover{
+                color: var(--active);
+            }
+        }
+
+        .avatar{
+            img{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+        }
+        .drop_menu{
+            margin-left: 10px;
+            .ant-dropdown-link{
+                color: #2184fc;
+            }
+        }
+    }
         .tabs{
             height: 30px;
             border: 1px solid #f0eeee;
