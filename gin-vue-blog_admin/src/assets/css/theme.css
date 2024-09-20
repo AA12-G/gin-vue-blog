@@ -1,0 +1,11 @@
+:root{
+    --bg: #f0eeee;
+    --order: #f0eeee;
+    --slide: #2b3539;
+}
+
+.dark{
+    --bg: #2a2a2a;
+    --order: #252525;
+    --slide: #1a1a1a;
+}

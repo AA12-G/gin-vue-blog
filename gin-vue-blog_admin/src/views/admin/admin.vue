@@ -1,6 +1,6 @@
 <script setup>
+import GVBTheme from '../../components/admin/gvb_admin.vue'
 import {useRouter} from "vue-router"
-
 const router = useRouter()
 function menuClick({key}){
     if(key === "logout"){
@@ -22,16 +22,15 @@ function menuClick({key}){
         <header>
            <div class="left">
             <a-breadcrumb>
-                <a-breadcrumb-item>首页</a-breadcrumb-item>
-                <a-breadcrumb-item><a href="">个人中心</a></a-breadcrumb-item>
-                <a-breadcrumb-item>用户列表</a-breadcrumb-item>
+                <a-breadcrumb-item class="menu"><a href="">首页</a></a-breadcrumb-item>
+                <a-breadcrumb-item class="menu"><a href="">个人中心</a></a-breadcrumb-item>
+                <a-breadcrumb-item class="menu"><a href="">用户列表</a></a-breadcrumb-item>
               </a-breadcrumb>
            </div>
            <div class="right">
                 <div class="icon_actions">
                     <i class="fa fa-home"></i>
-                    <i class="fa fa-moon-o"></i>
-                    <i class="fa fa-sun-o"></i>
+                    <GVBTheme></GVBTheme>
                     <i class="fa fa-arrows-alt"></i>
                 </div>
                 <div class="avatar">
@@ -46,16 +45,16 @@ function menuClick({key}){
                         <template #overlay>
                           <a-menu @click="menuClick">
                             <a-menu-item key="login">
-                              <a href="javascript:;">个人中心</a>
+                              <a href="javascript:;" class="menu-item-text">个人中心</a>
                             </a-menu-item>
                             <a-menu-item key="my_message">
-                              <a href="javascript:;">我的消息</a>
+                              <a href="javascript:;" class="menu-item-text">我的消息</a>
                             </a-menu-item>
                             <a-menu-item key="article_list">
-                              <a href="javascript:;">消息列表</a>
+                              <a href="javascript:;" class="menu-item-text">消息列表</a>
                             </a-menu-item>
                             <a-menu-item key="logout">
-                              <a href="javascript:;">注销退出</a>
+                              <a href="javascript:;" class="menu-item-text">注销退出</a>
                             </a-menu-item>
                           </a-menu>
                         </template>
@@ -77,14 +76,13 @@ function menuClick({key}){
     aside{
         width: 240px;
         height: 100vh;
-        background-color: #2b3539;
+        background-color: var(--slide);
     }
 
     .main{
         width: calc(100% - 240px);
         header{
             height: 60px;
-            background-color: white;
             padding: 0 40px;
             display: flex;
             justify-content: space-between;
@@ -119,19 +117,24 @@ function menuClick({key}){
         }
         .drop_menu{
             margin-left: 10px;
-            .ant-dropdown-link{
-                color: #2184fc;
-            }
+        
         }
     }
         .tabs{
             height: 30px;
-            border: 1px solid #f0eeee;
+            border: 1px solid var(--order);
         }
         main{
-            background-color: white;
+            background-color: var(--bg);
             height: calc(100vh - 90px);
         }
     }
+}
+
+.dark .menu-item-text{
+    color: gray !important;
+}
+.dark .menu{
+    color: gray !important;
 }
 </style>
