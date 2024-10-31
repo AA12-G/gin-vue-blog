@@ -31,7 +31,7 @@
   .gvb_aside_logo{
     padding: 10px;
     img{
-        width: 95%;
+        width: 90%;
     }
   }
 
