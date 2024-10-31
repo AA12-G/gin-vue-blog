@@ -17,6 +17,7 @@ func InitRouter() *gin.Engine {
 	router.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler))
 
 	apiRouterGroup := router.Group("api")
+
 	routerGroup := RouterGroup{apiRouterGroup}
 	//系统配置api
 	routerGroup.SettingsRouter()

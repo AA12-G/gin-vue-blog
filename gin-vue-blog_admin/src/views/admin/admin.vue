@@ -1,5 +1,6 @@
 <script setup>
-import GVBTheme from '../../components/admin/gvb_admin.vue'
+import GVBTheme from '../../components/gvb_admin.vue'
+import GVBAside from '../../components/admin/gvb_aside.vue'
 import {useRouter} from "vue-router"
 const router = useRouter()
 function menuClick({key}){
@@ -15,9 +16,7 @@ function menuClick({key}){
 
 <template>
 <div class="gvb_admin">
-    <aside>
-        
-    </aside>
+    <GVBAside></GVBAside>
     <div class="main">
         <header>
            <div class="left">

@@ -14,6 +14,10 @@ type EmailLoginRequest struct {
 	Password string `json:"password" binding:"required" msg:"请输入密码"`
 }
 
+type EmailLoginResponse struct {
+	Token string `json:"token"`
+}
+
 func (UserApi) EmailLoginView(c *gin.Context) {
 	var cr EmailLoginRequest
 	err := c.ShouldBindJSON(&cr)
@@ -48,5 +52,7 @@ func (UserApi) EmailLoginView(c *gin.Context) {
 		res.FailWithMessage("token生成失败", c)
 		return
 	}
-	res.OkWithData(token, c)
+
+	tokenStr := EmailLoginResponse{Token: token}
+	res.OkWithData(tokenStr, c)
 }

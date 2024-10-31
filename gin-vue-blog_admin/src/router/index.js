@@ -13,6 +13,11 @@ const router = createRouter({
       name:"admin",
       component:()=>import("../views/admin/admin.vue"),
       children:[]
+    },
+    {
+      path:"/",
+      name:"",
+      component:()=>import("../views/admin/admin.vue"),
     }
   ]
 })
