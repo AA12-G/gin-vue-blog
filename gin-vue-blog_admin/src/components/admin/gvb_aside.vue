@@ -8,7 +8,7 @@
             <div class="gvb_aside_logo">
                 <img src="https://www.logoko.com.cn/uploadfile/icon_case/201808/5b86063b48933.png">
             </div>
-            <div class="gvb_aside_title">文本内容</div>
+            <div class="gvb_aside_title">导航</div>
         </div>
         <div class="gvb_aside_body">
 
