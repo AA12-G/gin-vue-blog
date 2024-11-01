@@ -1,11 +1,13 @@
 <script setup>
 import GVBTheme from '../../components/gvb_admin.vue'
 import GVBAside from '../../components/admin/gvb_aside.vue'
+import GVBFullScreen from '../../components/gvb_full_screen.vue'
 import {useRouter} from "vue-router"
 const router = useRouter()
+
 function menuClick({key}){
     if(key === "logout"){
-        console.log("logout")
+        console.log("logout") 
         return
     }
     router.push({
@@ -30,7 +32,7 @@ function menuClick({key}){
                 <div class="icon_actions">
                     <i class="fa fa-home"></i>
                     <GVBTheme></GVBTheme>
-                    <i class="fa fa-arrows-alt"></i>
+                    <GVBFullScreen></GVBFullScreen>
                 </div>
                 <div class="avatar">
                     <img src="https://avatars.githubusercontent.com/u/141143150?v=4&size=64" alt="">
