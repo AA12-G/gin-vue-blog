@@ -1,6 +1,5 @@
 <script setup>
-import {ref} from "vue"
-const selectedKeys=ref(["1"])
+import GVBAsideMenu from "./gvb_aside_menu.vue"
 </script>
 
 <template>
@@ -12,27 +11,7 @@ const selectedKeys=ref(["1"])
             <div class="gvb_aside_title">博客后台系统</div>
         </div>
         <div class="gvb_aside_body">
-          <a-menu
-          v-model:selectedKeys="selectedKeys"
-          mode="inline"
-          theme="dark"
-          :inline-collapsed="false"
-        >
-          <a-menu-item key="1">
-            <template #icon>
-              <i class="fa fa-home"></i>
-            </template>
-            <span>首页</span>
-          </a-menu-item>
-          <a-sub-menu key="sub1">
-            <template #icon>
-              <i class="fa fa-user-circle-o"></i>
-            </template>
-            <template #title>用户管理</template>
-            <a-menu-item key="5">用户列表</a-menu-item>
-            <a-menu-item key="6">添加用户</a-menu-item>
-          </a-sub-menu>
-        </a-menu>
+            <GVBAsideMenu></GVBAsideMenu>
         </div>
     </aside>
 </template>
