@@ -2,6 +2,8 @@
 
 一个基于 Gin + Vue3 的现代化博客系统，包含前后台管理界面。
 
+[English Documentation](README_EN.md) | 中文文档
+
 <p align="center">
   <img src="https://www.logoko.com.cn/uploadfile/icon_case/201808/5b86063b48933.png" alt="GVB Logo" width="200">
 </p>
